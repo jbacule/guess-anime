@@ -74,10 +74,10 @@ export default function App() {
       )}
 
       {page === "QUESTION_COUNT" && (
-        <Card className="w-[500px] p-5 flex flex-col gap-3 items-center m-4">
-          <h1 className="text-xl font-bold text-white">
-            Select a number of{" "}
-            <span className="text-xl font-extrabold bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text text-transparent">
+        <Card className="w-[500px] px-5 py-10 flex flex-col gap-3 items-center m-4">
+          <h1 className="text-xl text-white">
+            Select number of{" "}
+            <span className="text-xl font-bold bg-gradient-to-r from-amber-300 to-amber-400 bg-clip-text text-transparent">
               ANIME
             </span>{" "}
             to guess
@@ -95,7 +95,7 @@ export default function App() {
       {page === "QUESTION_LIST" && questionIndex < questionCount && (
         <Card className="w-[500px] flex flex-col gap-y-3 items-center p-5  m-4">
           <h1 className="text-xl text-white font-bold">
-            Question: {questionIndex + 1}/{questionCount}
+            Anime: {questionIndex + 1}/{questionCount}
           </h1>
           <Image src={questions[questionIndex].image} className="max-w-[300px] h-auto" alt="anime" />
           <div className="w-full flex flex-col space-y-3">
@@ -115,11 +115,13 @@ export default function App() {
 
       {page === "QUESTION_ANSWER" && (
         <div className="w-[500px] flex flex-col items-center space-y-3">
-          <Button onClick={resetQuestions}>Play Again</Button>
+          <Button onClick={resetQuestions} variant="outline">
+            Play Again
+          </Button>
           <Card className="flex flex-col p-5 gap-y-3 justify-center  m-4">
             <div className="flex flex-col items-center">
-              <h1 className="text-3xl font-bold">
-                Your scored {result?.score}/{result?.total}
+              <h1 className="text-3xl font-bold text-white">
+                You scored {result?.score}/{result?.total}
               </h1>
               <h1 className="text-xl text-white">{result?.message}</h1>
             </div>
@@ -127,8 +129,8 @@ export default function App() {
               {questions.map((question, index) => (
                 <div key={index} className="flex items-center gap-2">
                   <Image src={question.image} className="max-w-[50px] h-auto" />
-                  <div className="flex flex-col space-y-2">
-                    <h1 className="text-lg text-green-600 font-bold">Title: {question.title}</h1>
+                  <div className="flex flex-col space-y-1">
+                    <h1 className="text-lg font-bold text-amber-400">{question.title}</h1>
                     <h1 className="text-sm text-white">Your Answer: {question.answer}</h1>
                   </div>
                 </div>
