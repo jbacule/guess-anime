@@ -11,7 +11,6 @@ type PageStatus = "LOADING" | "QUESTION_COUNT" | "QUESTION_LIST" | "QUESTION_ANS
 
 export default function App() {
   const [animes, setAnimes] = useState<AnimeFormat[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
   const [page, setPage] = useState<PageStatus>("LOADING");
   const [questionCount, setQuestionCount] = useState<number>(10);
   const [questions, setQuestions] = useState<AnimeFormat[]>([]);
@@ -56,12 +55,10 @@ export default function App() {
 
   useEffect(() => {
     const fetchAnime = async () => {
-      setLoading(true);
       setPage("LOADING");
       const response = await getAnimes();
       // const response = await getDummyAnimes();
       setAnimes(response);
-      setLoading(false);
       setPage("QUESTION_COUNT");
     };
 
@@ -71,15 +68,21 @@ export default function App() {
   return (
     <div id="main" className="w-screen min-h-screen flex items-center justify-center py-10">
       {page === "LOADING" && (
-        <Card className="w-[500px] p-10 flex items-center justify-center m-4">
-          <Loader loading={loading} />
+        <Card className="w-[300px] p-10 flex items-center justify-center m-4">
+          <Loader />
         </Card>
       )}
 
       {page === "QUESTION_COUNT" && (
         <Card className="w-[500px] p-5 flex flex-col gap-3 items-center m-4">
-          <h1 className="text-xl">Select number of anime to guess</h1>
-          <div className="flex items-center gap-3">
+          <h1 className="text-xl font-bold text-white">
+            Select a number of{" "}
+            <span className="text-xl font-extrabold bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text text-transparent">
+              ANIME
+            </span>{" "}
+            to guess
+          </h1>
+          <div className="flex items-center gap-2">
             {[10, 15, 20, 30, 40, 50].map((count) => (
               <Button key={count} onClick={() => selectQuestionCount(count)} variant="outline">
                 {count}

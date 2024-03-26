@@ -40,7 +40,7 @@ export const getAnimes = async () => {
 
     animes = [...animes, ...items];
 
-    await delay(2000);
+    await delay(1500);
   }
   return animes;
 };
