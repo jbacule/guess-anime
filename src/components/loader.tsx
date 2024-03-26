@@ -13,7 +13,8 @@ function Loader({ loading }: LoaderProps) {
       setImage(anime.image);
     };
 
-    let interval = undefined;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let interval: any = undefined;
 
     if (loading) {
       interval = setInterval(() => {

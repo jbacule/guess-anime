@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "./components/ui/button";
 import { AnimeFormat } from "./types";
-import { getAnimeQuestions, getAnimes, getDummyAnimes } from "./lib/anime";
+import { getAnimeQuestions, getAnimes } from "./lib/anime";
 import { getScore } from "./shared/utils";
 import { Card } from "./components/ui/card";
 import Image from "rc-image";
