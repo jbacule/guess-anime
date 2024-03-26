@@ -1,3 +1,5 @@
+import { AnimeFormat } from "@/types";
+
 export function removeDuplicatesById<T extends { id: number }>(objects: T[]): T[] {
   const uniqueObjectsMap: Map<number, T> = new Map();
 
@@ -65,4 +67,23 @@ export function shuffleArray<T extends { id: number }>(objects: T[]): T[] {
   }
 
   return shuffledArray;
+}
+
+export function getScore(questions: AnimeFormat[]) {
+  const total = questions.length;
+  let score = 0;
+  let message = "";
+  for (let i = 0; i < total; i++) {
+    if (questions[i].answer === questions[i].title) {
+      score++;
+    }
+  }
+
+  if (score > total / 2) {
+    message = "Great Job! You know your stuff.";
+  } else {
+    message = "Better luck next time.";
+  }
+
+  return { score, total, message };
 }

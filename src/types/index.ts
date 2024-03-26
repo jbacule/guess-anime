@@ -1,6 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+export type AnimeFormat = {
+  id: number;
+  title: string;
+  image: string;
+  genres: string[];
+  choices?: AnimeFormat[];
+  answer?: string;
+};
+
 export type AnimeResult = {
-  data: Anime;
+  data: Anime[];
 };
 
 export type Anime = {
@@ -34,8 +42,8 @@ export type Anime = {
   year: null;
   broadcast: Broadcast;
   producers: Demographic[];
-  licensors: any[];
-  studios: any[];
+  // licensors: any[];
+  // studios: any[];
   genres: Genre[];
   explicit_genres: Genre[];
   themes: Demographic[];
